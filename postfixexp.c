@@ -1,8 +1,9 @@
+//Evaluation of postfix expression
 #define size 50
 #include<stdio.h>
 #include<ctype.h>
 int s[size];
-int top=size-1;
+int top=-1;
 int push(int ele)
 {
 	s[++top]=ele;

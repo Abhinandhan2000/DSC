@@ -1,5 +1,6 @@
+//Sort elements of array in ascending order using quick sort
 #include<stdio.h>
-void quicksort(int[10],int,int);
+void quicksort(int[],int,int);
 int main()
 {
 	int x[20],si,i;
@@ -14,7 +15,7 @@ int main()
 	printf("Sorted elements ");
 	for(i=0;i<si;i++)
 	{
-		printf("%d",x[i]);
+		printf("%d\t",x[i]);
 	}
 	return 0;
 }

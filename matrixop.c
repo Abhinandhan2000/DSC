@@ -1,3 +1,4 @@
+//TO perform matrix operations on arrays
 #include<stdio.h>
 int main(void)
 {
