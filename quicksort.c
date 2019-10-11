@@ -1,56 +1,48 @@
-//Sort elements of array in ascending order using quick sort
-#include<stdio.h>
-void quicksort(int[],int,int);
-int main()
+// Quick sort Algorithm
+
+#include<stdio.h> 
+void quicksort(int array[], int m, int n);
+
+int main(void)
 {
-	int x[20],si,i;
-	printf("Enter size of array ");
-	scanf("%d",&si);
-	printf("Enter %d elements ",si);
-	for(i=0;i<si;i++)
-	{
-		scanf("%d",&x[i]);
-	}
-	quicksort(x,0,si-1);
-	printf("Sorted elements ");
-	for(i=0;i<si;i++)
-	{
-		printf("%d\t",x[i]);
-	}
+	int x[20], size, i;
+	printf("Enter the size of array: ");
+	scanf("%d", &size);
+	printf("Enter the elements o the array: \n");
+	for(i = 0; i < size; i++)
+		scanf("%d", &x[i]);
+	quicksort(x, 0, size - 1);
+	printf("Sorted elements: \n");
+	for(i = 0; i < size; i++)
+		printf("%d\t", x[i]);
 	return 0;
 }
-void quicksort(int x[10],int first,int last)
+
+void quicksort(int x[10], int first, int last)
 {
-	int pivot,j,t,i;
-	if(first<last)
+	int pivot, j, temp, i;
+	if(first < last)
 	{
-		pivot=first;
-		i=first;
-		j=last;
+		pivot = first;
+		i = first;
+		j = last;
+		while(i < j)
+		{
+			while(x[i] <= x[pivot] && i < last)
+				i++;
+			while(x[j] > x[pivot])
+				j--;
+			if(i < j)
+			{
+				temp = x[i];
+				x[i] = x[j];
+				x[j] = temp;
+			}
+		}
+		temp = x[pivot];
+		x[pivot] = x[j];
+		x[j] = temp;
+		quicksort(x, first, j-1);
+		quicksort(x, j+1, last);
 	}
-	while(i<j)
-	{
-		while(x[i]<=x[pivot]&&i<last)
-		{
-			i++;
-		}
-		while(x[j]>x[pivot])
-		{
-			j--;
-
-		}
-		if(i<j)
-		{
-			t=x[i];
-			x[i]=x[j];
-			x[j]=t;
-
-		}
-
-	}
-	t=x[pivot];
-	x[pivot]=x[j];
-	x[j]=t;
-	quicksort(x,first,j-1);
-	quicksort(x,j+1,last);
 }
